@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block mybody %}
+<div class="edit-profile">
+    <h1>Edit Profile</h1>
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="id_first_name">First Name:</label>
+        <input type="text" id="id_first_name" name="first_name" value="{{ profile.user.first_name }}">
+      </div>
+      <div class="form-group">
+        <label for="id_last_name">Last Name:</label>
+        <input type="text" id="id_last_name" name="last_name" value="{{ profile.user.last_name }}">
+      </div>
+      <div class="form-group">
+        <label for="id_email">Email:</label>
+        <input type="email" id="id_email" name="email" value="{{ profile.user.email }}">
+      </div>
+      <div class="form-group">
+        <label for="id_age">Age:</label>
+        <input type="number" id="id_age" name="age" value="{{ profile.age }}">
+      </div>
+      <div class="form-group">
+        <label for="id_gender">Gender:</label>
+        <input type="text" id="id_gender" name="gender" value="{{ profile.gender }}">
+      </div>
+      <div class="form-group">
+        <label for="id_address">Address:</label>
+        <input type="text" id="id_address" name="address" value="{{ profile.address }}">
+      </div>
+      <div class="form-group">
+        <label for="id_phone">Phone Number:</label>
+        <input type="text" id="id_phone" name="phone" value="{{ profile.phone }}">
+      </div>
+      <div class="form-group">
+        <label for="id_picture">Profile Picture:</label>
+        <input type="file" id="id_picture" name="picture">
+      </div>
+      <button type="submit">Save</button>
+    </form>
+  </div>
+{% endblock %}
