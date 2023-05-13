@@ -55,7 +55,7 @@ To get started with the Token Generator, you'll need to have Python installed on
 Once you have Python installed, clone this repository to your local machine using:
 
 ```
-git clone https://github.com/jithu-francis017/Med-B.git
+[git clone https://github.com/jithu-francis017/Med-B.git](https://github.com/Med-B-ProjectX/Med_B.git)
 ```
 
 Then, navigate to the repository directory and run the following command:
