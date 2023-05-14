@@ -3,7 +3,7 @@
 
 {% block styles %} 
 <style>
-.profile {
+  .profile {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -11,21 +11,39 @@
     margin-top: 50px;
   }
   
-  .profile h1 {
-    font-size: 24px;
-    margin-bottom: 10px;
+  .profile-heading{
+    padding-top:20px;
+    padding-bottom: 20px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    text-align: center; 
+  }
+
+  .profile-img{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    height: 450px;
   }
   
   .profile img {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
+    width: 250px;
+    height: 250px;
+    border-radius: 10px;
     margin-bottom: 20px;
   }
   
   .profile-info {
-    text-align: center;
+    text-align: left;
+    margin-left: 250px;
   }
+  
+  
+  
+  
+  
   
   .profile-info h2 {
     font-size: 20px;
@@ -35,30 +53,43 @@
   .profile-info p {
     margin-bottom: 5px;
   }
+
+  .edit-button{
+    margin-top:30px;
+    margin-right: 40px;
+  }
   
   .profile a {
     margin-top: 20px;
-  }    
+    margin-bottom: 20px;
+    float: right;
+  }  
+  
 </style>
 {% endblock %}
 
 
 {% block mybody %}
     
-    <div class="container text-center">
-        <br><br><br>
-        <div class="profile">
-            <h1>Profile</h1>
-            <img src="{{ user.profile.picture.url }}" alt="Profile Picture">
-            <div class="profile-info">
-              <h1 style="color:black;">{{ user.first_name }}{{user.last_name }}</h1>
-              <p>Age: {{ user.profile.age }}</p>
-              <p>Gender: {{ user.profile.gender }}</p>
-              <p>Address: {{ user.profile.address }}</p>
-              <p>Phone Number: {{ user.profile.phone }}</p>
-              <p>Email: {{ user.email }}</p>
-            </div>
-            <a href="{% url 'edit_profile' %}">Edit Profile</a>
-          </div>
+<div class="container  ">
+  <div class="profile">
+    <div class="container profile-heading">
+      <h1 style='color:#0750bd;'>Profile</h1>
     </div>
+    <div class="container profile-img">
+      <img src="{{ user.profile.picture.url }}" alt="Profile Picture">
+      <div class="profile-info">
+        <h1 style="color:black;">{{ user.first_name }}{{user.last_name }}</h1>
+        <p>Age: {{ user.profile.age }}</p>
+        <p>Gender: {{ user.profile.gender }}</p>
+        <p>Address: {{ user.profile.address }}</p>
+        <p>Phone Number: {{ user.profile.phone }}</p>
+        <p>Email: {{ user.email }}</p>
+      </div>
+    </div>
+    <div class="container edit-button ">
+      <a href="{% url 'edit_profile' %}" class="btn" style="color: white; background-color: #5c00e6;"type="submit" id="header-links">Edit Profile</a>
+    </div>
+  </div>
+</div>
 {% endblock %}
