@@ -45,6 +45,129 @@
       padding: 20px 40px;
     }
 
+
+    #head{
+      width:50%;
+      display:flex;
+      margin-left:-40px;
+    }
+
+    .alarm-section{
+      width: 30%;
+      height:30px;
+      margin-left:550px;
+      margin-top:-50px;
+  }
+
+  #btn_alarm{
+    margin-left:250px;
+    font-size:40px;
+    background:transparent;
+    border:none;
+  }
+
+  .reminder{
+    display:flex;
+    flex:left;
+  }
+
+  .reminder-block{
+    height:350px;
+    width:800px;
+    margin-top:50px;
+    gap:2.5rem;
+    display:flex;
+    flex:left;
+  }
+
+  .rem{
+    height:200px;
+    width:250px;
+    padding:10px;
+    border: 1px solid;
+  }
+
+  .rem h4{
+    margin-top:10px;
+    font-size:30px;
+  }
+
+  .rem h5{
+    margin-top:10px;
+  }
+
+  .rem button{
+    margin-top:20px;
+    margin-left:15%;
+    width:150px;
+    height:40px;
+  }
+
+  #alarm-set{
+    height:300px;
+    width:400px;
+    border: 1px solid;
+    margin-left:900px;
+    margin-top:-380px;
+    display: none;
+    flex-direction: column;
+  }
+
+  #medlab{
+    font-size:20px;
+    margin-left: 15%;
+  }
+
+  #time{
+    width:200px;
+    height:40px;
+    font-size:20px;
+    margin-top:20px;
+    margin-left: 15%;
+  }
+
+  #text{
+    margin-top:20px;
+    margin-left: 15%;
+    width:300px;
+    height:40px;
+  }
+
+  #btn{
+    margin-top:40px;
+    margin-left: 35%;
+    width:150px;
+    height:40px;
+  }
+
+  .radio-button{
+    display: flex;
+    gap: 2rem;
+    margin-left: 15%;
+    font-size: 15px;
+    margin-top:10px;
+  }
+
+  .rem-text{
+    display:flex;
+  }
+
+  .snooze{
+    background:none;
+    border:none;
+    animation: pulse is infinite;
+  }
+
+  button.snooze{
+    height: 25px;
+    width: 19px;
+    margin-block-end: auto;
+    margin-left: 82px;
+    margin-top: -1px;
+    font-size: 21px;
+  }
+
+
     .card{
       margin: 20px auto;
       padding: 20px 40px;
@@ -201,37 +324,63 @@
     <br>
     <br>
     <!--=============== Medications ===============-->
-    <section class="container section section__height" id="medications">
+  <section class="container section section__height" id="medications">
       <div class="m">
-        <h1>Medications:</h1>
+        <h1 id="head">Medications:</h1>
+        <div class="alarm-section">
+          <button id="btn_alarm"><i class='bx bx-alarm-add'></i></button>
+        </div>
       </div>
-      <div class="container"> 
-          <div class="row"> 
-              <div class="col-lg-6 mb-4"> 
-                  <div class="card"> 
-                      <img class="card-img-top" src="" alt=""> 
-                  <div class="card-body"> 
-                      <h5 class="card-title">Cetrizine</h5> 
-                        <p class="card-text"> 
-                            After breakfast. Not Taken. 
-                        </p> 
-                        <a href="#" class="btn btn-primary"> 
-                            Mark as Taken. 
-                        </a> 
-                  </div> 
-              </div> 
-          </div> 
-          <div class="col-lg-6 mb-4"> 
-              <div class="card"> 
-                  <img class="card-img-top" src="" alt=""> 
-                  <div class="card-body"> 
-                      <h5 class="card-title">Fluconazole</h5> 
-                        <p class="card-text">After breakfast. Not Taken</p> 
-                          <a href="#" class="btn btn-primary"> Mark as Taken </a> 
-                  </div> 
-              </div> 
-          </div> 
-        </div> 
+        <div class="reminder"> 
+        <div class="reminder-block" id="rev">
+          <div class="rem" id="alarm1">
+            <div class="rem-text">
+              <label>Reminder 1</label>
+              <button class="snooze" id="bell1" onclick="toggleAnimation"><i class='bx bx-alarm-snooze'></i></button>  
+            </div>
+            <h4 id="rem1" data-flag="off"></h4>
+            <h5 id="a1"></h5>
+            <button class="cancel"  onclick="clear_alarm(1)">Mark as Taken</button>
+          </div>
+          <div class="rem" id="alarm2">
+          <div class="rem-text">
+            <label>Reminder 2</label>
+            <button class="snooze" id="bell2" onclick="toggleAnimation"><i class='bx bx-alarm-snooze'></i></button>  
+          </div>
+          <h4 id="rem2" data-flag="off"></h4>
+          <h5 id="a2"></h5>
+          <button class="cancel" onclick="clear_alarm(2)">Mark as Taken</button>
+        </div>
+        <div class="rem" id="alarm3">
+        <div class="rem-text">
+          <label>Reminder 2</label>
+          <button class="snooze" id="bell3" onclick="toggleAnimation"><i class='bx bx-alarm-snooze'></i></button>  
+        </div>
+        <h4 id="rem3" data-flag="off"></h4>
+        <h5 id="a3"></h5>
+        <button class="cancel" onclick="clear_alarm(3)">Mark as Taken</button>
+        </div>
+      </div>
+    </div>
+    <div id="alarm-set">
+      <label id="medlab">Set Medications:</label>
+      <input type="time" id="time">
+      <div class="radio-button" id="radio">
+        <div class="morning">
+            <label for="mrng">Morning:</label>
+            <input type="radio" id="mrng" name="group1"  value="1">    
+        </div>
+        <div class="morning">
+            <label for="mrng">Afternoon:</label>
+            <input type="radio" id="afn" name="group1"  value="2">>    
+        </div>
+        <div class="morning">
+            <label for="mrng">Night:</label>
+            <input type="radio" id="nyt" name="group1"  value="3">>    
+        </div>
+    </div>
+      <input type="text" id="text" placeholder="Specify Med">
+      <button id="btn" onclick="alarm()">Set Alarm</button>
     </div>
   </section>
   <br>
@@ -329,6 +478,237 @@
     // Display the greeting and date
     document.getElementById('greeting').textContent = timeOfDay;
     document.getElementById('date').textContent = date;
+    //Display and hide alarm setting
+    const btn = document.getElementById('btn_alarm');
+
+    btn.addEventListener('click', () => {
+    const setalarm= document.getElementById('alarm-set');
+
+    if (setalarm.style.display == 'none') {
+      // 👇️ this SHOWS the form
+      setalarm.style.display = 'flex';
+    } else {
+      // 👇️ this HIDES the form
+      setalarm.style.display = 'none';
+    }
+    });
+
+    //button wise routine
+    var radiobutton=document.getElementById('radio');
+    radiobutton.addEventListener('click', function() {
+      radbutt();
+    });
+
+    function radbutt()
+    {
+      var radioButtons = document.getElementsByName('group1');
+      console.log(radioButtons);
+          for (var i = 0; i < radioButtons.length; i++) {
+            if (radioButtons[i].checked) {
+              var selectedValue = radioButtons[i].value;
+              console.log(selectedValue);
+              break;  // Exit the loop since we found the selected radio button
+            }
+          }
+          var timeInput = document.getElementById('time');
+  
+          if(selectedValue==1)
+          {
+            timeInput.value='09:00';
+          }
+          else if(selectedValue==2)
+          {
+            timeInput.value='12:30';
+          }
+          else if(selectedValue==3)
+          {
+            timeInput.value='21:00';
+          } 
+    }
+
+    
+    //alarm
+    function alarm()
+    {
+        var remainder1=document.getElementById('rem1');
+        var flag1=remainder1.getAttribute('data-flag');
+        var remainder2=document.getElementById('rem2');
+        var flag2=remainder2.getAttribute('data-flag');
+        var remainder3=document.getElementById('rem3');
+        var flag3=remainder3.getAttribute('data-flag');
+  
+        var al1=document.getElementById('a1');
+        var al2=document.getElementById('a2');
+        var al3=document.getElementById('a3');
+
+        var bell1=document.getElementById('bell1');
+        var bell2=document.getElementById('bell2');
+        var bell3=document.getElementById('bell3');
+  
+        var alarminput=document.getElementById('time').value;
+        if (alarminput =='') {
+            alert('Please enter a valid alarm time');
+            return;
+        }
+        var now = new Date();
+        var alarm = new Date(now.toDateString() + ' ' + alarminput);
+        var timedif = alarm - now;
+        if(timedif<0){
+            alert('Please choose a time in the future');
+            return;
+        }
+        var text=document.getElementById('text').value;
+
+        if(flag1=='off')
+        {
+          remainder1.textContent=text;
+          remainder1.setAttribute('data-flag','on');
+
+          if(alarminput<'12:00')
+          {
+            al1.textContent=alarminput+" Morning";
+          }
+          else if(alarminput<'16:00')
+          {
+            al1.textContent=alarminput+" Afternoon";
+          }
+          else if(alarminput<'19:00')
+          {
+            al1.textContent=alarminput+" Evening";
+          }
+          else
+          {
+            al1.textContent=alarminput+" Night";
+          }
+          
+          cancel_alarm1=setTimeout(function(){
+            tsnooze(bell1);
+            var audio =new Audio('audio.mp3');
+            audio.play();
+            alert('Its time for Meds');
+          },timedif);
+        }
+        else if(flag2=='off')
+        {
+          remainder2.textContent=text;
+          remainder2.setAttribute('data-flag','on');
+
+          if(alarminput<'12:00')
+          {
+            al2.textContent=alarminput+" Morning";
+          }
+          else if(alarminput<'16:00')
+          {
+            al2.textContent=alarminput+" Afternoon";
+          }
+          else if(alarminput<'19:00')
+          {
+            al2.textContent=alarminput+" Evening";
+          }
+          else
+          {
+            al2.textContent=alarminput+" Night";
+          }
+
+          cancel_alarm2=setTimeout(function(){
+            tsnooze(bell2);
+            alert('Wake Up');
+          },timedif);
+        }
+        else if(flag3=='off')
+        {
+          remainder3.textContent=text;
+          remainder3.setAttribute('data-flag','on');
+
+
+          if(alarminput<'12:00')
+          {
+            al3.textContent=alarminput+" Morning";
+          }
+          else if(alarminput<'16:00')
+          {
+            al3.textContent=alarminput+" Afternoon";
+          }
+          else if(alarminput<'19:00')
+          {
+            al3.textContent=alarminput+" Evening";
+          }
+          else
+          {
+            al3.textContent=alarminput+" Night";
+          }
+
+          cancel_alarm3=setTimeout(function(){
+            tsnooze(bell3);
+            alert('Wake Up');
+          },timedif);
+        }
+        else{
+          alert('All reminders are set');
+        }
+        clear_set();
+    }
+
+   function tsnooze(sn)
+    {
+      setTimeout(function (){
+        sn.style.color="red";
+      },1000);
+    }
+
+    function clear_set()
+    {
+      document.getElementById('time').value="";
+      document.getElementById('text').value="";
+      const setalarm= document.getElementById('alarm-set');
+      setalarm.style.display = 'none';
+    }
+
+
+  //clear alarm()
+  function clear_alarm(num)
+  {
+    var remainder1=document.getElementById('rem1');
+    var flag1=remainder1.getAttribute('data-flag');
+    var remainder2=document.getElementById('rem2');
+    var flag2=remainder2.getAttribute('data-flag');
+    var remainder3=document.getElementById('rem3');
+    var flag3=remainder3.getAttribute('data-flag');
+
+    var al1=document.getElementById('a1');
+    var al2=document.getElementById('a2');
+    var al3=document.getElementById('a3');
+
+    var bell1=document.getElementById('bell1');
+    var bell2=document.getElementById('bell2');
+    var bell3=document.getElementById('bell3');
+
+    if(num==1)
+    {
+      remainder1.textContent='';
+      remainder1.setAttribute('data-flag','off');
+      al1.textContent='';
+      bell1.style.color="black";
+
+      clearTimeout(cancel_alarm1);
+    }
+    else if(num==2)
+    {
+      remainder2.textContent='';
+      remainder2.setAttribute('data-flag','off');
+      al2.textContent='';
+      bell2.style.color="black";
+      clearTimeout(cancel_alarm2);
+    }
+    else
+    {
+      remainder3.textContent='';
+      remainder3.setAttribute('data-flag','off');
+      al3.textContent='';
+      bell3.style.color="black";
+      clearTimeout(cancel_alarm3);
+    }
+  }
   </script>
 </body>
 </html>
