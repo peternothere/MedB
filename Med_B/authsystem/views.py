@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseNotAllowed
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from . forms import UserRegisterForm
@@ -64,3 +64,36 @@ def edit_profile(request):
         return redirect('profile')
 
     return render(request, 'edit_profile.html', {'profile': profile})
+
+
+from django.shortcuts import HttpResponse
+
+def read_response(request):
+    with open('authsystem/response.txt', 'r') as file:
+        response = file.read()
+    return HttpResponse(response)
+
+
+
+from django.http import HttpResponse
+import os
+from django.views.decorators.csrf import csrf_exempt
+
+@csrf_exempt
+
+
+def save_user_input(request):
+    if request.method == 'POST':
+        user_input = request.POST.get('userInput', '')
+
+        file_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'static', 'authsystem', 'query.txt')
+        
+        with open(file_path, 'w+') as file:
+            file.write(user_input)
+
+        return HttpResponse('Success')
+
+    return HttpResponseNotAllowed(['POST'])
+
+
+

@@ -1,6 +1,8 @@
 import openai
+from django.core.management.base import BaseCommand
 from dotenv import load_dotenv
 import os
+import time
 
 API = "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"
 
@@ -40,16 +42,20 @@ def ReplayBrain(question, chat_log=None):
 
     return answer
 
-while True:
-    with open(query_file_path, "r") as file:
-        query = file.read().strip()
 
-    # Perform some operations or processing to generate the response
-    response_content = ReplayBrain(query)
+class Command(BaseCommand):
+    help = 'Starts the AI Brain'
 
-    # Write the response to response.txt
-    with open(response_file_path, "w") as file:
-        file.write(response_content)
-    print(ReplayBrain(query))
+    def handle(self, *args, **options):
+        while True:
+            with open(query_file_path, "r") as file:
+                query = file.read().strip()
 
+            if query:
+                response_content = ReplayBrain(query)
+                with open(response_file_path, "w") as file:
+                    file.write(response_content)
+                self.stdout.write(f"Query: {query}")
+                self.stdout.write(f"Response: {response_content}")
 
+            time.sleep(1)
