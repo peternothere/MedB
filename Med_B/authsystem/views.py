@@ -78,22 +78,31 @@ def read_response(request):
 from django.http import HttpResponse
 import os
 from django.views.decorators.csrf import csrf_exempt
-
+from AIBrain import ReplayBrain
 @csrf_exempt
 
 
 def save_user_input(request):
     if request.method == 'POST':
         user_input = request.POST.get('userInput', '')
+        response = ReplayBrain(user_input)
+        #file_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'static', 'authsystem', 'query.txt')
+        response_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'static', 'authsystem', 'response.txt')
 
-        file_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'static', 'authsystem', 'query.txt')
+        '''with open(file_path, 'w+') as file:
+            file.write(user_input)'''
         
-        with open(file_path, 'w+') as file:
-            file.write(user_input)
+        with open(response_path, 'w+') as file:
+            file.write(response)
 
         return HttpResponse('Success')
 
     return HttpResponseNotAllowed(['POST'])
+
+
+
+
+
 
 
 
