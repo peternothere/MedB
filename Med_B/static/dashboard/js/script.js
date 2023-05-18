@@ -99,25 +99,31 @@ function autoReply() {
 
   // Make an AJAX request to read the response from the 'responses.txt' file
   const xhr = new XMLHttpRequest();
-  xhr.open('GET', '/static/authsystem/response.txt', true);
+  xhr.open('GET', 'static/authsystem/response.txt', true);
 
   xhr.onreadystatechange = function () {
     if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
       const response = xhr.responseText.trim();
-      message = `
-        <div class="chatbox-message-item received">
-          <span class="chatbox-message-item-text">
-            ${response}
-          </span>
-          <span class="chatbox-message-item-time">${addZero(today.getHours())}:${addZero(today.getMinutes())}</span>
-        </div>
-      `;
-      chatboxMessageWrapper.insertAdjacentHTML('beforeend', message);
-			scrollBottom();
-		}
-	};
-	xhr.send();
+      setTimeout(function() { // Add a 1-second delay using setTimeout
+        message = `
+          <div class="chatbox-message-item received">
+            <span class="chatbox-message-item-text">
+              ${response}
+            </span>
+            <span class="chatbox-message-item-time">${addZero(today.getHours())}:${addZero(today.getMinutes())}</span>
+          </div>
+        `;
+        chatboxMessageWrapper.insertAdjacentHTML('beforeend', message);
+        scrollBottom();
+      }, 1000); // Delay of 1000 milliseconds (1 second)
+    }
+  };
+
+  xhr.send();
 }
+
+
+
 
 
 
