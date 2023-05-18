@@ -97,14 +97,15 @@ function autoReply() {
   const today = new Date();
   let message = '';
 
-  // Make an AJAX request to read the response from the 'responses.txt' file
-  const xhr = new XMLHttpRequest();
-  xhr.open('GET', 'static/authsystem/response.txt', true);
+  // Add a 1-second delay before making the AJAX request
+  setTimeout(function() {
+    // Make an AJAX request to read the response from the 'responses.txt' file
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', 'static/authsystem/response.txt', true);
 
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
-      const response = xhr.responseText.trim();
-      setTimeout(function() { // Add a 1-second delay using setTimeout
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+        const response = xhr.responseText.trim();
         message = `
           <div class="chatbox-message-item received">
             <span class="chatbox-message-item-text">
@@ -115,12 +116,13 @@ function autoReply() {
         `;
         chatboxMessageWrapper.insertAdjacentHTML('beforeend', message);
         scrollBottom();
-      }, 1000); // Delay of 1000 milliseconds (1 second)
-    }
-  };
+      }
+    };
 
-  xhr.send();
+    xhr.send();
+  }, 1000); // Delay of 1000 milliseconds (1 second)
 }
+
 
 
 
