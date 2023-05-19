@@ -2,7 +2,7 @@ import openai
 from dotenv import load_dotenv
 import os
 
-API = "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"
+API = "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"
 
 openai.api_key = API
 load_dotenv()
@@ -40,7 +40,7 @@ def ReplayBrain(question, chat_log=None):
 
     return answer
 
-while True:
+"""while True:
     with open(query_file_path, "r") as file:
         query = file.read().strip()
 
@@ -50,6 +50,6 @@ while True:
     # Write the response to response.txt
     with open(response_file_path, "w") as file:
         file.write(response_content)
-    print(ReplayBrain(query))
+    print(ReplayBrain(query))"""
 
 

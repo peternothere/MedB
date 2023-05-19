@@ -101,7 +101,7 @@ function autoReply() {
   setTimeout(function() {
     // Make an AJAX request to read the response from the 'responses.txt' file
     const xhr = new XMLHttpRequest();
-    xhr.open('GET', 'static/authsystem/response.txt', true);
+    xhr.open('GET', '/static/authsystem/response.txt', true);
 
     xhr.onreadystatechange = function () {
       if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
