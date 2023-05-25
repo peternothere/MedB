@@ -13,7 +13,7 @@
 
   <link rel="stylesheet" href="{% static 'dashboard/css/styles.css' %}">
   <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
-	<link rel="stylesheet" href="{% static 'dashboard/css/style.css' %}">
+	<link rel="stylesheet" href="{% static 'dashboard/css/style.css' %}"> 
 
 
 	<style>
@@ -84,7 +84,10 @@
     height:200px;
     width:250px;
     padding:10px;
-    border: 1px solid;
+    border: none;
+    border-radius:5px;
+    background:#fff;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
   }
 
   .rem h4{
@@ -167,10 +170,34 @@
     font-size: 21px;
   }
 
+  .cancel{
+    background-color:#335DFF;
+    color: #FFF;
+    border-radius:8px;
+    border:none;
+  }
+
+  #alarm-set{
+    background-color:#FFF;
+  }
 
     .card{
       margin: 20px auto;
       padding: 20px 40px;
+    }
+
+    @keyframes shake {
+      0% { transform: translate(1px, 1px) rotate(0deg); }
+      10% { transform: translate(-1px, -2px) rotate(-1deg); }
+      20% { transform: translate(-3px, 0px) rotate(1deg); }
+      30% { transform: translate(3px, 2px) rotate(0deg); }
+      40% { transform: translate(1px, -1px) rotate(1deg); }
+      50% { transform: translate(-1px, 2px) rotate(-1deg); }
+      60% { transform: translate(-3px, 1px) rotate(0deg); }
+      70% { transform: translate(3px, 1px) rotate(-1deg); }
+      80% { transform: translate(-1px, -1px) rotate(1deg); }
+      90% { transform: translate(1px, 2px) rotate(0deg); }
+      100% { transform: translate(1px, -2px) rotate(-1deg); }
     }
 	</style>
 </head>
@@ -439,6 +466,7 @@
 <script src="{% static 'dashboard/js/main.js' %}"></script>
   
 <script src="{% static 'dashboard/js/script.js' %}"></script>
+<script src="../static/dashboard/js/alarm_clock.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/brython@3.9.6/brython.js"></script>
 
 	<!-- Bootstrap 5 JS -->
@@ -516,189 +544,7 @@
           } 
     }
 
-    
-    //alarm
-    function alarm()
-    {
-        var remainder1=document.getElementById('rem1');
-        var flag1=remainder1.getAttribute('data-flag');
-        var remainder2=document.getElementById('rem2');
-        var flag2=remainder2.getAttribute('data-flag');
-        var remainder3=document.getElementById('rem3');
-        var flag3=remainder3.getAttribute('data-flag');
   
-        var al1=document.getElementById('a1');
-        var al2=document.getElementById('a2');
-        var al3=document.getElementById('a3');
-
-        var bell1=document.getElementById('bell1');
-        var bell2=document.getElementById('bell2');
-        var bell3=document.getElementById('bell3');
-  
-        var alarminput=document.getElementById('time').value;
-        if (alarminput =='') {
-            alert('Please enter a valid alarm time');
-            return;
-        }
-        var now = new Date();
-        var alarm = new Date(now.toDateString() + ' ' + alarminput);
-        var timedif = alarm - now;
-        if(timedif<0){
-            alert('Please choose a time in the future');
-            return;
-        }
-        var text=document.getElementById('text').value;
-
-        if(flag1=='off')
-        {
-          remainder1.textContent=text;
-          remainder1.setAttribute('data-flag','on');
-
-          if(alarminput<'12:00')
-          {
-            al1.textContent=alarminput+" Morning";
-          }
-          else if(alarminput<'16:00')
-          {
-            al1.textContent=alarminput+" Afternoon";
-          }
-          else if(alarminput<'19:00')
-          {
-            al1.textContent=alarminput+" Evening";
-          }
-          else
-          {
-            al1.textContent=alarminput+" Night";
-          }
-          
-          cancel_alarm1=setTimeout(function(){
-            tsnooze(bell1);
-            var audio =new Audio('audio.mp3');
-            audio.play();
-            alert('Its time for Meds');
-          },timedif);
-        }
-        else if(flag2=='off')
-        {
-          remainder2.textContent=text;
-          remainder2.setAttribute('data-flag','on');
-
-          if(alarminput<'12:00')
-          {
-            al2.textContent=alarminput+" Morning";
-          }
-          else if(alarminput<'16:00')
-          {
-            al2.textContent=alarminput+" Afternoon";
-          }
-          else if(alarminput<'19:00')
-          {
-            al2.textContent=alarminput+" Evening";
-          }
-          else
-          {
-            al2.textContent=alarminput+" Night";
-          }
-
-          cancel_alarm2=setTimeout(function(){
-            tsnooze(bell2);
-            alert('Wake Up');
-          },timedif);
-        }
-        else if(flag3=='off')
-        {
-          remainder3.textContent=text;
-          remainder3.setAttribute('data-flag','on');
-
-
-          if(alarminput<'12:00')
-          {
-            al3.textContent=alarminput+" Morning";
-          }
-          else if(alarminput<'16:00')
-          {
-            al3.textContent=alarminput+" Afternoon";
-          }
-          else if(alarminput<'19:00')
-          {
-            al3.textContent=alarminput+" Evening";
-          }
-          else
-          {
-            al3.textContent=alarminput+" Night";
-          }
-
-          cancel_alarm3=setTimeout(function(){
-            tsnooze(bell3);
-            alert('Wake Up');
-          },timedif);
-        }
-        else{
-          alert('All reminders are set');
-        }
-        clear_set();
-    }
-
-   function tsnooze(sn)
-    {
-      setTimeout(function (){
-        sn.style.color="red";
-      },1000);
-    }
-
-    function clear_set()
-    {
-      document.getElementById('time').value="";
-      document.getElementById('text').value="";
-      const setalarm= document.getElementById('alarm-set');
-      setalarm.style.display = 'none';
-    }
-
-
-  //clear alarm()
-  function clear_alarm(num)
-  {
-    var remainder1=document.getElementById('rem1');
-    var flag1=remainder1.getAttribute('data-flag');
-    var remainder2=document.getElementById('rem2');
-    var flag2=remainder2.getAttribute('data-flag');
-    var remainder3=document.getElementById('rem3');
-    var flag3=remainder3.getAttribute('data-flag');
-
-    var al1=document.getElementById('a1');
-    var al2=document.getElementById('a2');
-    var al3=document.getElementById('a3');
-
-    var bell1=document.getElementById('bell1');
-    var bell2=document.getElementById('bell2');
-    var bell3=document.getElementById('bell3');
-
-    if(num==1)
-    {
-      remainder1.textContent='';
-      remainder1.setAttribute('data-flag','off');
-      al1.textContent='';
-      bell1.style.color="black";
-
-      clearTimeout(cancel_alarm1);
-    }
-    else if(num==2)
-    {
-      remainder2.textContent='';
-      remainder2.setAttribute('data-flag','off');
-      al2.textContent='';
-      bell2.style.color="black";
-      clearTimeout(cancel_alarm2);
-    }
-    else
-    {
-      remainder3.textContent='';
-      remainder3.setAttribute('data-flag','off');
-      al3.textContent='';
-      bell3.style.color="black";
-      clearTimeout(cancel_alarm3);
-    }
-  }
   </script>
 </body>
 </html>
