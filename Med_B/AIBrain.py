@@ -2,7 +2,7 @@ import openai
 from dotenv import load_dotenv
 import os
 
-API = "your api key"
+API = "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"
 
 openai.api_key = API
 load_dotenv()
@@ -22,10 +22,10 @@ def ReplayBrain(question, chat_log=None):
     if chat_log is None:
         chat_log = chat_log_template
 
-    prompt = f'{chat_log[:2000]}You: {question}\nSnowWhite: '  # Reduce prompt length to fit within the context limit
+    prompt = f'{chat_log[:2000]}You: {question}\nMed-B : '  # Reduce prompt length to fit within the context limit
     response = completion.create(
         model="text-davinci-002",
-        prompt=prompt,
+        prompt=prompt,   #question + "Assume yourself as a medical exper named Med-B.",
         temperature=0.5,
         max_tokens=100,  # Adjust the maximum tokens as needed
         top_p=0.3,
