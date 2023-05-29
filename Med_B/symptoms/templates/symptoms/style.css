@@ -1,0 +1,128 @@
+.container{
+    padding: 20px;
+}
+
+.title{
+    box-sizing: border-box;
+    height: 150px;
+    width: 75%;
+    max-width: 100%;
+    margin-top: 40px;
+    padding: 50px;;
+    border: none;
+    background-color:#335DFF;
+    border-radius: 5px;
+    margin-left: 15%;    
+}
+
+.title-word{
+    font-weight: bold;
+    margin-top: -40px;
+    margin-left:35%;
+    padding-top: 45px;
+    color: white; 
+    font-size:30px;
+}
+
+.form-select{
+    max-width: 300px;
+}
+
+.in_out{ 
+    max-width: 100%;
+    margin-top: 100px;
+}
+
+
+.disease_form{
+    margin-top: 50px;
+    border: none;
+    padding: 20px;
+    max-width: 350px;
+    border-radius: 8px;
+    justify-content: left;
+    margin-left: 15%;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+}
+
+.result{
+    border: none;
+    margin-top: -448px;
+    display: flex;
+    width: 350px;
+    max-width: 350px;
+    height:448px;
+    border-radius: 8px;
+    float: right;
+    margin-right: 10%;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+}
+
+#submit{
+    margin-top: 20px;
+    width: 100px;
+    margin-left:30%;
+    background-color: #335DFF;
+    border: none;
+    border-radius: 5px;
+    height: 40px;
+    color: #FFF;
+}
+
+@media(max-width: 1000px){
+    .title{
+        height: auto;
+        justify-content: center;
+    }
+
+    .title-word{
+        font-size: 25px;
+        margin-left: 25%;
+        
+    }
+
+    
+    
+    .disease_form{
+        align-items: center;
+        margin-left: 30%;
+    
+    }
+
+    .result{
+        margin-top: 50px;
+        margin-right: 19%;
+        
+    }
+
+}
+
+@media(max-width: 600px){
+    .title{
+        height: 20px;
+        justify-content: center;
+    }
+
+    .title-word{
+        font-size: 13px;
+        margin-left: 5%;
+
+    }
+
+    .in_out{
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+    }
+    
+    .disease_form{
+        margin-left: 10%;
+    }
+
+    .result{
+        margin-top: 50px;
+        width:235px;
+        margin-right: 8%;
+    }
+
+}

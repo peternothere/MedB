@@ -23,6 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('authsystem.urls')),
     path('prescription/',include('prescription.urls')),
+    path('disease_prediction/', include('symptoms.urls')),
 ]
 
 if settings.DEBUG:

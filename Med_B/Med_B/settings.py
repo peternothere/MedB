@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'prescription.apps.PrescriptionConfig',
     'crispy_forms',
     'crispy_bootstrap5',
+    'symptoms',
 ]
 
 CRISPY_ALLOWED_TEMPLATE_PACK = 'bootstrap5'
