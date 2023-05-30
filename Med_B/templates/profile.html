@@ -5,95 +5,117 @@
 <style>
   .profile {
     display: flex;
-    align-items: center;
     justify-content: center;
-    flex-direction: column;
     margin-top: 50px;
   }
   
-  .profile-heading{
-    padding-top:20px;
-    padding-bottom: 20px;
-    height: 120px;
+  .profile-left {
+    width: 40%;
     display: flex;
     align-items: center;
-    justify-content: center; 
-    text-align: center; 
-  }
-
-  .profile-img{
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    height: 450px;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 3%;
+    padding: 20px;
+    background: linear-gradient(to bottom, #3B74FE, #2182B8);
+    color: #ffffff;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
   }
   
-  .profile img {
+  .profile-left h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .profile-left img {
     width: 250px;
     height: 250px;
-    border-radius: 60px;
+    border-radius: 50%;
     margin-bottom: 20px;
   }
   
+  .profile-right {
+    width: 60%;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .profile-right h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    color: #5c00e6;
+  }
+  
   .profile-info {
-    text-align: left;
-    margin-left: 250px;
-  }
-  
-  
-  
-  .profile-heading h1{
-    font-size: 100px;
-  }
-  
-  
-  
-  .profile-info h1 {
-    font-size: 60px;
-    margin-bottom: 10px;
-  }
-  
-  .profile-info p {
-    font-size: 20px;
-    margin-bottom: 5px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
   }
 
-  .edit-button{
-    margin-top:30px;
-    margin-right: 40px;
+  .profile-info p {
+    margin: 0;
+    padding: 10px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    font-family: 'Arial', sans-serif;
+    color: #0029E6;
+  }
+
+  .edit-button {
+    margin-top: 30px;
+    text-align: center;
   }
   
   .profile a {
     margin-top: 20px;
     margin-bottom: 20px;
     float: right;
+    color: #ffffff;
+    background-color: #5c00e6;
   }  
   
+  @media (max-width: 768px) {
+    .profile {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .profile-left,
+    .profile-right {
+      width: 90%;
+    }
+  }
 </style>
 {% endblock %}
 
-
 {% block mybody %}
     
-<div class="container  ">
+<div class="container">
   <div class="profile">
-    <div class="container profile-heading">
-      <h1 style='color:#0750bd;'>Profile</h1>
-    </div>
-    <div class="container profile-img">
+    <div class="profile-left">
+      <h1>{{ user.first_name }} {{ user.last_name }}</h1>
       <img src="{{ user.profile.picture.url }}" alt="Profile Picture">
-      <div class="profile-info">
-        <h1 style="color:black;">{{ user.first_name }}{{user.last_name }}</h1>
-        <br><br>
-        <p>Age: {{ user.profile.age }}</p>
-        <p>Gender: {{ user.profile.gender }}</p>
-        <p>Address: {{ user.profile.address }}</p>
-        <p>Phone Number: {{ user.profile.phone }}</p>
-        <p>Email: {{ user.email }}</p>
+      <div class="edit-button">
+        <a href="{% url 'edit_profile' %}" class="btn btn-primary" type="submit" id="header-links">Edit Profile</a>
       </div>
     </div>
-    <div class="container edit-button ">
-      <a href="{% url 'edit_profile' %}" class="btn" style="color: white; background-color: #5c00e6;"type="submit" id="header-links">Edit Profile</a>
+    <div class="profile-right">
+      <h1>Profile Details</h1>
+      <div class="profile-info">
+        <p><strong>Age:</strong> {{ user.profile.age }}</p>
+        <p><strong>Gender:</strong> {{ user.profile.gender }}</p>
+        <p><strong>Address:</strong> {{ user.profile.address }}</p>
+        <p><strong>Phone Number:</strong> {{ user.profile.phone }}</p>
+        <p><strong>Email:</strong> {{ user.email }}</p>
+      </div>
     </div>
   </div>
 </div>
