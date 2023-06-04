@@ -31,10 +31,10 @@ is_queue_running = False
 first = True
 row = 1
 root = tk.Tk()
-root.geometry("1650x850")
+root.geometry("1450x750")
 root.title("TOKEN GENERATOR")
 root.resizable(False, False)
-frame1 = Frame(root, highlightbackground="black", highlightthickness=3,width=1580, height=790, bd= 0)
+frame1 = Frame(root, highlightbackground="black", highlightthickness=3,width=1380, height=690, bd= 0)
 frame1.place(x=33, y=26)
 
 class QueueManager:
@@ -93,13 +93,6 @@ def save_state():
         }
         pickle.dump(saved_state, f)
 
-def close_window():
-    save_state()
-    root.destroy()
-
-# Save state when window is closed
-root.protocol("WM_DELETE_WINDOW", close_window)
-
 #workbook = openpyxl.Workbook()
 workbook = openpyxl.load_workbook(filename='Tokens Generated.xlsx')
 worksheet = workbook.active
@@ -109,6 +102,31 @@ worksheet['B1'] = 'TIME'
 worksheet['C1'] = 'TOKENS GENERATED'
 '''
 row = worksheet.max_row + 1
+
+
+
+def close_window():
+    global row
+    total_count = queue_manager.total_count
+    now = datetime.datetime.now()
+    current_date = now.strftime("%d/%m/%Y")
+    #print(current_date)
+    current_time = now.strftime("%H:%M:%S")
+    #print(current_time)
+    
+    if total_count != 0:
+        worksheet.cell(row=row, column=1, value=current_date)
+        worksheet.cell(row=row, column=2, value=current_time)
+        worksheet.cell(row=row, column=3, value=total_count)
+        # Increment the row index
+        row += 1
+        # Save the workbook to a file
+        workbook.save('Tokens Generated.xlsx')
+    save_state()
+    root.destroy()
+
+# Save state when window is closed
+root.protocol("WM_DELETE_WINDOW", close_window)
 
 
 token_count = tk.Label(root,text = " ", font=("Arial", 17),fg="black", bg="white",width=40,height=1)
@@ -283,7 +301,7 @@ scrollbar = ttk.Scrollbar(root, style="Vertical.TScrollbar")
 style.configure("Horizontal.TScrollbar", gripcount=0, background="#f0f0f0", troughcolor="#d9d9d9", bordercolor="#d9d9d9", darkcolor="#d9d9d9", lightcolor="#d9d9d9")
 hscrollbar = ttk.Scrollbar(root, style="Horizontal.TScrollbar", orient=tk.HORIZONTAL)
 
-screen = tk.Label(root, text="", font=("Arial", 30), bg="black", fg="white", width=19, height=5)
+screen = tk.Label(root, text="", font=("Arial", 30), bg="black", fg="white", width=15, height=4)
 screen.place(x=750,y=270)
 
 start_button = tk.Button(root, text="START", font=("Arial", 16), command=start_screen, width=7)
@@ -296,14 +314,14 @@ stop_button = tk.Button(root, text="STOP", font=("Arial", 16), command=stop_scre
 stop_button.place(x=100,y=380)
 
 waiting_status = tk.Label(root,text = " ", font=("Arial", 18),fg="black",width=25,height=2)
-waiting_status.place(x=780,y=540)
+waiting_status.place(x=740,y=456)
 waiting_status.config(text="WAITING LIST")
 
-waiting_list = tk.Listbox(root, font="Arial 16",  width=37, height=8)
+waiting_list = tk.Listbox(root, font="Arial 16",  width=29, height=8)
 waiting_list.config(yscrollcommand=scrollbar.set)
 scrollbar.config(command=waiting_list.yview)
-waiting_list.place(x=750,y=600)
-scrollbar.place(x=1198, y=600, height=204)
+waiting_list.place(x=750,y=500)
+scrollbar.place(x=1102, y=500, height=204)
 for i in queue_manager.waiting:
     waiting_list.insert(tk.END,i)
 
@@ -322,16 +340,16 @@ generated_tokens.delete("0",tk.END)
 generated_tokens.insert(tk.END,f"{queue_manager.tokens}")
 
 wait_button = tk.Button(root, text="WAIT", font=("Arial", 16), command=add_to_wait, width=7)
-wait_button.place(x=100,y=640)
+wait_button.place(x=100,y=540)
 
 insert_button = tk.Button(root, text="INSERT TO SCREEN", font=("Arial", 16), command=screen_insert)
-insert_button.place(x=100,y=700)
+insert_button.place(x=100,y=600)
 
 generate_button = tk.Button(root, text="GENERATE TOKENS", font=("Arial", 16), command=generate_token, height=2)
-generate_button.place(x=1360,y=700)
+generate_button.place(x=1160,y=600)
 
 reset_button = tk.Button(root,text="RESET", font=("Arial",16),width=10, height=2, command=token_reset)
-reset_button.place(x=1400,y=600)
+reset_button.place(x=1200,y=500)
 
 
 root.mainloop()
