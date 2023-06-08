@@ -131,11 +131,18 @@
   }
 
   #time{
-    width:200px;
+    width:100px;
     height:40px;
     font-size:20px;
     margin-top:20px;
     margin-left: 15%;
+  }
+
+  #dateinput{
+    width:130px;
+    height:40px;
+    margin-left:200px;
+    margin-top:-40px;
   }
 
   #text{
@@ -389,7 +396,7 @@
               <button class="snooze" id="bell1" onclick="toggleAnimation"><i class='bx bx-alarm-snooze'></i></button>  
             </div>
             <h4 id="rem1" data-flag="off"></h4>
-            <h5 id="a1"></h5>
+            <h6 id="a1"></h6>
             <button class="cancel"  onclick="clear_alarm(1)">Mark as Taken</button>
           </div>
           <div class="rem" id="alarm2">
@@ -398,16 +405,16 @@
             <button class="snooze" id="bell2" onclick="toggleAnimation"><i class='bx bx-alarm-snooze'></i></button>  
           </div>
           <h4 id="rem2" data-flag="off"></h4>
-          <h5 id="a2"></h5>
+          <h6 id="a2"></h6>
           <button class="cancel" onclick="clear_alarm(2)">Mark as Taken</button>
         </div>
         <div class="rem" id="alarm3">
         <div class="rem-text">
-          <label>Reminder 2</label>
+          <label>Reminder 3</label>
           <button class="snooze" id="bell3" onclick="toggleAnimation"><i class='bx bx-alarm-snooze'></i></button>  
         </div>
         <h4 id="rem3" data-flag="off"></h4>
-        <h5 id="a3"></h5>
+        <h6 id="a3"></h6>
         <button class="cancel" onclick="clear_alarm(3)">Mark as Taken</button>
         </div>
       </div>
@@ -415,6 +422,7 @@
     <div id="alarm-set">
       <label id="medlab">Set Medications:</label>
       <input type="time" id="time">
+      <input type="date" id="dateinput">
       <div class="radio-button" id="radio">
         <div class="morning">
             <label for="mrng">Morning:</label>
