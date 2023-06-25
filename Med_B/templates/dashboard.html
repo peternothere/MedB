@@ -141,7 +141,7 @@
   #dateinput{
     width:130px;
     height:40px;
-    margin-left:200px;
+    margin-left:180px;
     margin-top:-40px;
   }
 
@@ -183,7 +183,7 @@
     height: 25px;
     width: 19px;
     margin-block-end: auto;
-    margin-left: 82px;
+    margin-left: 50px;
     margin-top: -1px;
     font-size: 21px;
   }
@@ -202,9 +202,24 @@
     background-color:#FFF;
   }
 
+  #dropdown{
+    width:50px;
+    margin-left:310px;
+    margin-top:-40px;
+    height:40px;
+  }
+
     .card{
       margin: 20px auto;
       padding: 20px 40px;
+    }
+
+    .countdown{
+      border:2px solid;
+      margin-left:20px;
+      font-size:18px;
+      height:25px;
+      width:25px;
     }
 
     @keyframes shake {
@@ -394,6 +409,7 @@
             <div class="rem-text">
               <label>Reminder 1</label>
               <button class="snooze" id="bell1" onclick="toggleAnimation"><i class='bx bx-alarm-snooze'></i></button>  
+              <h6 class="countdown" id="countdown1"></h6>
             </div>
             <h4 id="rem1" data-flag="off"></h4>
             <h6 id="a1"></h6>
@@ -403,6 +419,7 @@
           <div class="rem-text">
             <label>Reminder 2</label>
             <button class="snooze" id="bell2" onclick="toggleAnimation"><i class='bx bx-alarm-snooze'></i></button>  
+            <h6 class="countdown" id="countdown2"></h6>
           </div>
           <h4 id="rem2" data-flag="off"></h4>
           <h6 id="a2"></h6>
@@ -412,6 +429,7 @@
         <div class="rem-text">
           <label>Reminder 3</label>
           <button class="snooze" id="bell3" onclick="toggleAnimation"><i class='bx bx-alarm-snooze'></i></button>  
+          <h6 class="countdown" id="countdown3"></h6>
         </div>
         <h4 id="rem3" data-flag="off"></h4>
         <h6 id="a3"></h6>
@@ -423,6 +441,15 @@
       <label id="medlab">Set Medications:</label>
       <input type="time" id="time">
       <input type="date" id="dateinput">
+      <select id="dropdown">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+      </select> 
       <div class="radio-button" id="radio">
         <div class="morning">
             <label for="mrng">Morning:</label>
@@ -575,7 +602,8 @@
           } 
     }
 
-  
+
+
   </script>
 </body>
 </html>
