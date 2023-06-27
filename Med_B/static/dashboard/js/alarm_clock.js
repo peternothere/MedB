@@ -227,10 +227,11 @@ window.onload = function() {
 
     if(num==1)
     {
-      var count=document.getElementById('countdown1');
+      var count=document.getElementById('countdown1').textContent;
+      console.log(count);
       var alarm = JSON.parse(localStorage.getItem("saved_alarm1"));
       
-      if(count==1||count==0)
+      if(count==0||count==1)
       {
         remainder1.textContent='';
         remainder1.setAttribute('data-flag','off');
@@ -256,7 +257,7 @@ window.onload = function() {
     }
     else if(num==2)
     {
-      var count=document.getElementById('countdown2');
+      var count=document.getElementById('countdown2').textContent;
       var alarm = JSON.parse(localStorage.getItem("saved_alarm2"));
       
       if(count==1||count==0)
@@ -285,7 +286,7 @@ window.onload = function() {
     }
     else
     {
-      var count=document.getElementById('countdown3');
+      var count=document.getElementById('countdown3').textContent;
       var alarm = JSON.parse(localStorage.getItem("saved_alarm3"));
       
       if(count==1||count==0)
@@ -317,8 +318,10 @@ window.onload = function() {
   
 
   function alarm_saver1(alarminput,text,dateinput,count)
-  {      var alarm = new Date(dateinput + ' ' + alarminput);
-
+  {    
+      //var alarm = new Date(dateinput + ' ' + alarminput);
+    if(count!=0)
+    {
       var remainder1=document.getElementById('rem1');
       var flag1=remainder1.getAttribute('data-flag');
       var remainder2=document.getElementById('rem2');
@@ -385,11 +388,14 @@ window.onload = function() {
         },timedif);
 
       clear_set();
+    }
+
   }
 
   function alarm_saver2(alarminput,text,dateinput,count)
   {
-
+    if(count!=0)
+    {
       var remainder1=document.getElementById('rem1');
       var flag1=remainder1.getAttribute('data-flag');
       var remainder2=document.getElementById('rem2');
@@ -452,11 +458,14 @@ window.onload = function() {
         },timedif);
 
       clear_set();
+    }
+
   }
 
   function alarm_saver3(alarminput,text,dateinput,count)
   {
-
+    if(count!=0)
+    {
       var remainder1=document.getElementById('rem1');
       var flag1=remainder1.getAttribute('data-flag');
       var remainder2=document.getElementById('rem2');
@@ -518,6 +527,8 @@ window.onload = function() {
         },timedif);
 
       clear_set();
+    }
+
   }
 
 function audi()
