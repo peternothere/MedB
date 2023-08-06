@@ -16,7 +16,7 @@ window.onload = function() {
 
 }
     //alarm
-    function alarm()
+   function alarm()
     {
 
         var remainder1=document.getElementById('rem1');
@@ -54,10 +54,21 @@ window.onload = function() {
           var alarm = new Date(now.toDateString()+ ' ' + alarminput);
         }
         var timedif = alarm - now;
+
+        console.log(alarm);
+        console.log(dateinput);
+        console.log(alarminput);
+        console.log(now);
+
+        var testdif = alarm - now;
+
+        console.log(testdif);
+
         if(timedif<0){
             alert('Please choose a time in the future');
             return;
         }
+        console.log(timedif);
         var text=document.getElementById('text').value;
           if(flag1=='off')
           {
@@ -82,7 +93,6 @@ window.onload = function() {
             }
             console.log(alarmcount);
             document.getElementById('countdown1').textContent=alarmcount;
-            alarmcount=alarmcount-1;
   
             var saved_alarm1 = {
               time:alarminput,
@@ -90,10 +100,13 @@ window.onload = function() {
               date: dateinput,
               count: alarmcount
             };
-  
-            localStorage.setItem("saved_alarm1",JSON.stringify(saved_alarm1))
-            
-            cancel_alarm1=setTimeout(function(){
+
+            localStorage.setItem("saved_alarm1",JSON.stringify(saved_alarm1));
+
+
+          console.log("Finished setting up the first alarm");
+          console.log(timedif);
+          cancel_alarm1=setTimeout(function(){
               tsnooze(bell1);
   
               alert('Its time for Meds');
@@ -122,7 +135,6 @@ window.onload = function() {
             }
 
             document.getElementById('countdown2').textContent=alarmcount;
-            alarmcount=alarmcount-1;
 
             var saved_alarm2 = {
               time:alarminput,
@@ -131,8 +143,10 @@ window.onload = function() {
               count:alarmcount,
             };
   
-            localStorage.setItem("saved_alarm2",JSON.stringify(saved_alarm2))
-            
+            localStorage.setItem("saved_alarm2",JSON.stringify(saved_alarm2));
+
+            console.log("Finished setting up the second alarm");
+
   
             cancel_alarm2=setTimeout(function(){
               tsnooze(bell2);
@@ -165,7 +179,6 @@ window.onload = function() {
 
             document.getElementById('countdown3').textContent=alarmcount;
 
-            alarmcount=alarmcount-1;
 
             var saved_alarm3 = {
               time:alarminput,
@@ -174,8 +187,10 @@ window.onload = function() {
               count:alarmcount,
             };
   
-            localStorage.setItem("saved_alarm3",JSON.stringify(saved_alarm3))
-            
+            localStorage.setItem("saved_alarm3",JSON.stringify(saved_alarm3));
+
+            console.log("Finished setting up the third alarm");
+
             cancel_alarm3=setTimeout(function(){
               tsnooze(bell3);
               audi();
@@ -238,12 +253,18 @@ window.onload = function() {
         al1.textContent='';
         bell1.style.color="black";
         bell1.style.animation='none';
-  
+        document.getElementById('countdown1').textContent='';
+
+        alarm.count=0;
+
+        localStorage.setItem("saved_alarm1", JSON.stringify(alarm));
+
         clearTimeout(cancel_alarm1);
 
       }
       else
       {
+        console.log('Reached here in clear alarm');
         dateinput=alarm.date; 
         var dateObject = new Date(dateinput);
         dateObject.setDate(dateObject.getDate() + 1);
@@ -252,7 +273,9 @@ window.onload = function() {
         bell1.style.animation='none';
         clearTimeout(cancel_alarm1);
 
-        alarm_saver1(alarm.time,alarm.message,dateinput,alarm.count);
+        console.log("reched in first junction of clear alarm");
+        count=count-1;
+        alarm_saver1(alarm.time,alarm.message,dateinput,count);
       }
     }
     else if(num==2)
@@ -267,7 +290,12 @@ window.onload = function() {
         al2.textContent='';
         bell2.style.color="black";
         bell2.style.animation='none';
-  
+        document.getElementById('countdown2').textContent='';
+
+        alarm.count=0;
+
+        localStorage.setItem("saved_alarm2", JSON.stringify(alarm));
+
         clearTimeout(cancel_alarm2);
 
       }
@@ -280,8 +308,10 @@ window.onload = function() {
         bell2.style.color="black";
         bell2.style.animation='none';
         clearTimeout(cancel_alarm2);
+        count=count-1;
+        console.log("reched in second junction of clear alarm");
         
-        alarm_saver2(alarm.time,alarm.message,dateinput,alarm.count);
+        alarm_saver2(alarm.time,alarm.message,dateinput,count);
       }
     }
     else
@@ -293,10 +323,15 @@ window.onload = function() {
       {
         remainder3.textContent='';
         remainder3.setAttribute('data-flag','off');
-        al13.textContent='';
+        al3.textContent='';
         bell3.style.color="black";
         bell3.style.animation='none';
-  
+        
+        alarm.count=0;
+
+        localStorage.setItem("saved_alarm3", JSON.stringify(alarm));
+
+        document.getElementById('countdown1').textContent='';
         clearTimeout(cancel_alarm3);
 
       }
@@ -309,18 +344,23 @@ window.onload = function() {
         bell3.style.color="black";
         bell3.style.animation='none';
         clearTimeout(cancel_alarm3);
+
+        count=count-1;
+
+        console.log("reched in third junction of clear alarm");
         
-        alarm_saver3(alarm.time,alarm.message,dateinput,alarm.count);
+        alarm_saver3(alarm.time,alarm.message,dateinput,count);
       }
     }
   }
 
   
 
-  function alarm_saver1(alarminput,text,dateinput,count)
+  function alarm_saver1(alarminput,text,dateinput,alarmcount)
   {    
+    console.log("reched in alarmsaver1");
       //var alarm = new Date(dateinput + ' ' + alarminput);
-    if(count!=0)
+    if(alarmcount!=0)
     {
       var remainder1=document.getElementById('rem1');
       var flag1=remainder1.getAttribute('data-flag');
@@ -337,8 +377,6 @@ window.onload = function() {
       var bell2=document.getElementById('bell2');
       var bell3=document.getElementById('bell3');
 
-      var alarmcount=document.getElementById('dropdown');
-
       var now = new Date();
       if(dateinput != '')
       {
@@ -349,8 +387,11 @@ window.onload = function() {
         var alarm = new Date(now.toDateString()+ ' ' + alarminput);
         dateinput=(now.toDateString());
       }
+      console.log(alarm);
+      console.log(now);
 
       var timedif = alarm - now;
+
       if(timedif<0){
           alert('Please choose a time in the future');
           return;
@@ -376,9 +417,17 @@ window.onload = function() {
         {
           al1.textContent=alarminput+" Night "+dateinput;
         }
+    
+        document.getElementById('countdown1').textContent=alarmcount;
+        console.log(alarmcount);
+        var saved_alarm1 = {
+          time:alarminput,
+          message: text,
+          date: dateinput,
+          count: alarmcount
+        };
 
-        document.getElementById('countdown1').textContent=count;
-
+        localStorage.setItem("saved_alarm1",JSON.stringify(saved_alarm1));
 
         cancel_alarm1=setTimeout(function(){
           tsnooze(bell1);
@@ -392,9 +441,11 @@ window.onload = function() {
 
   }
 
-  function alarm_saver2(alarminput,text,dateinput,count)
+  function alarm_saver2(alarminput,text,dateinput,alarmcount)
   {
-    if(count!=0)
+
+    console.log("reched in alarmsaver2");
+    if(alarmcount!=0)
     {
       var remainder1=document.getElementById('rem1');
       var flag1=remainder1.getAttribute('data-flag');
@@ -448,7 +499,18 @@ window.onload = function() {
           al2.textContent=alarminput+" Night "+dateinput;
         }
 
-        document.getElementById('countdown2').textContent=count;
+        document.getElementById('countdown2').textContent=alarmcount;
+
+        console.log(alarmcount);
+
+        var saved_alarm2 = {
+          time:alarminput,
+          message: text,
+          date:dateinput,
+          count:alarmcount,
+        };
+
+        localStorage.setItem("saved_alarm2",JSON.stringify(saved_alarm2));
 
         cancel_alarm2=setTimeout(function(){
           tsnooze(bell2);
@@ -462,9 +524,11 @@ window.onload = function() {
 
   }
 
-  function alarm_saver3(alarminput,text,dateinput,count)
+  function alarm_saver3(alarminput,text,dateinput,alarmcount)
   {
-    if(count!=0)
+
+    console.log("reched in alarmsaver3");
+    if(alarmcount!=0)
     {
       var remainder1=document.getElementById('rem1');
       var flag1=remainder1.getAttribute('data-flag');
@@ -517,7 +581,20 @@ window.onload = function() {
           al3.textContent=alarminput+" Night "+dateinput;
         }
 
-        document.getElementById('countdown3').textContent=count;
+        document.getElementById('countdown3').textContent=alarmcount;
+
+
+        console.log(alarmcount);
+
+        var saved_alarm3 = {
+          time:alarminput,
+          message: text,
+          date:dateinput,
+          count:alarmcount,
+        };
+
+        localStorage.setItem("saved_alarm3",JSON.stringify(saved_alarm3));
+
 
         cancel_alarm3=setTimeout(function(){
           tsnooze(bell3);

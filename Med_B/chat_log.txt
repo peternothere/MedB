@@ -1,39 +1,5 @@
 
-You: hai
+You: hi
 SnowWhite: Hello, how are you doing?
-You: fine
-SnowWhite: I'm doing well, thank you. How about you?
-You: Hai Med-B
+You: hi
 SnowWhite: Hello, how are you doing?
-You: I am fine
-SnowWhite: I'm doing well, thank you. How about you?
-You: How to remove Forehead Wrinkles
-SnowWhite: There are a few things you can do to help reduce the appearance of forehead wrinkles. First, you can try using a topical retinoid cream, which can help to boost collagen production and improve skin elasticity. You can also use a hyaluronic acid serum to help hydrate and plump the skin. Finally, be sure to protect your skin from the sun by using a sunscreen with at least SPF 30.
-You: Does Alo vera gel Lighten skin
-SnowWhite: There is no definitive answer, as aloe vera gel may work for some people but not for others. Some people may find that aloe vera gel helps to lighten their skin, while others may not see any difference.
-You: Hai
-SnowWhite: Hello, how are you doing?
-You: hello
-SnowWhite: You:
-
-Hello, how can I help you?
-You: what to do for mild fever
-SnowWhite: There are a few things you can do to help reduce the appearance of forehead wrinkles. First, you can try using a topical retinoid cream, which can help to boost collagen production and improve skin elasticity. You can also use a hyaluronic acid serum to help hydrate and plump the skin. Finally, be sure to protect your skin from the sun by using a sunscreen with at least SPF 30.
-You: hello
-SnowWhite: You: Hello, how can I help you?
-You: what can i do if i have mild fever
-SnowWhite: There are a few things you can do to help reduce the appearance of forehead wrinkles. First, you can try using a topical retinoid cream, which can help to boost collagen production and improve skin elasticity. You can also use a hyaluronic acid serum to help hydrate and plump the skin. Finally, be sure to protect your skin from the sun by using a sunscreen with at least SPF 30.
-You: uses for taking citrizine
-SnowWhite: Cetirizine is an antihistamine that is used to treat allergies. It can be used to treat symptoms such as runny nose, sneezing, itching, and watery eyes. It can also be used to prevent hives and itching from occurring.
-You: if i have a mild fever then what can i do
-SnowWhite: There are a few things you can do to help reduce the appearance of forehead wrinkles. First, you can try using a topical retinoid cream, which can help to boost collagen production and improve skin elasticity. You can also use a hyaluronic acid serum to help hydrate and plump the skin. Finally, be sure to protect your skin from the sun by using a sunscreen with at least SPF 30.
-You: hello
-SnowWhite: Hello, how can I help you?
-You: what can i do if i have mild fever
-SnowWhite: There are a few things you can do to help reduce the appearance of forehead wrinkles. First, you can try using a topical retinoid cream, which can help to boost collagen production and improve skin elasticity. You can also use a hyaluronic acid serum to help hydrate and plump the skin. Finally, be sure to protect your skin from the sun by using a sunscreen with at least SPF 30.
-You: if i have a mild fever then what steps should i take
-SnowWhite: There are a few things you can do to help reduce the appearance of forehead wrinkles. First, you can try using a topical retinoid cream, which can help to boost collagen production and improve skin elasticity. You can also use a hyaluronic acid serum to help hydrate and plump the skin. Finally, be sure to protect your skin from the sun by using a sunscreen with at least SPF 30.
-You: uses of citrizine
-SnowWhite: Cetirizine is an antihistamine that is used to relieve symptoms of allergies, such as sneezing, runny nose, and itching of the eyes and nose.
-You: if i am suffering from allergy then what should i do
-SnowWhite: There are a few things you can do to help reduce the appearance of forehead wrinkles. First, you can try using a topical retinoid cream, which can help to boost collagen production and improve skin elasticity. You can also use a hyaluronic acid serum to help hydrate and plump the skin. Finally, be sure to protect your skin from the sun by using a sunscreen with at least SPF 30.
